@@ -4,6 +4,7 @@ This is a project to experiment with Langton's Ant.
 
 Firstly I have implemented the basic algorithm. Using clones of an object for the cells. Currently it assumes a square or cube to get the correct visual. Circle or sphere would also make sense, just have some gaps. Experimenting with other shapes and patterns will come.
 
+SmapleScene is set up ready to go but if you want to use the script yourself then adhere to the following.
 Current usage; appply AntPlane.cs to empty gameobject who's position will be the center (or close to) of the grid and its rotation will be used for the grid coords.
 
 Cell Object         = Gameobject for each cell. SampleScene has it set to a cube object with starting material set.
