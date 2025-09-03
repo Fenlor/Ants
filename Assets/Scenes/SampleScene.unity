@@ -785,7 +785,7 @@ MonoBehaviour:
   gridSize: 256
   colourOneMaterial: {fileID: 2100000, guid: 1a28c301971e7124d8af179b8573ecaa, type: 2}
   colourTwoMaterial: {fileID: 2100000, guid: df545822b72a99546b313464488f83aa, type: 2}
-  moveTimeDelta: 0.005
+  moveTimeDelta: 0.01
 --- !u!4 &1907036747
 Transform:
   m_ObjectHideFlags: 0
