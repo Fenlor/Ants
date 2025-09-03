@@ -40,7 +40,7 @@ public class AntPlane : MonoBehaviour
 
             //Debug.Log("AntPlane - Start() - cellGrid Length:" + cellGrid.Length);
             //Debug.Log("AntPlane - Start() - cellGrid[0] Length:" + cellGrid[0].Length);
-            //cellGrid[gridSize] = new GameObject[gridSize];
+           
             float cellSize = cellObject.GetComponent<MeshRenderer>().bounds.size.x;
             float halfCellSize = cellSize * 0.5f;
             //assume square for cell?
@@ -58,8 +58,6 @@ public class AntPlane : MonoBehaviour
             {
                 for (int gridY = 0; gridY < cellGrid.GetLength(1); gridY++)
                 {
-                    //cellGrid[gridX] = new GameObject[gridY];
-                    //cellGrid[gridX][gridY] = new GameObject();
                     cellGrid[gridX, gridY] = Instantiate(cellObject, startPos, transform.rotation);
                     cellGrid[gridX, gridY].SetActive(false);
                     startPos.x += cellSize;                    
@@ -69,8 +67,8 @@ public class AntPlane : MonoBehaviour
             }
 
             //ant to find cell near center to start on
-            //ant will always move from cell center to cell center, teleport to start. Lerp is easy though, might be cool
-            //use cell count to find cell? sounds good
+            //ant will always move from cell center to cell center, teleport to start. Lerp is easy though, might be cool looking as well.
+            
             int halfCells = (int)(gridSize * 0.5f);
             activeCell = cellGrid[halfCells, halfCells];
             activeRow = halfCells;
@@ -217,7 +215,7 @@ public class AntPlane : MonoBehaviour
     }
     private void AntMove()
     {
-        Debug.Log("AntMove - activeRow, activeColumn: " + activeRow + ", " + activeColumn);
+        //Debug.Log("AntMove - activeRow, activeColumn: " + activeRow + ", " + activeColumn);
         if (isRowMove)
         {
             if (activeRow >= 1 && activeRow < gridSize - 1)
