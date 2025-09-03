@@ -11,7 +11,7 @@ public class AntPlane : MonoBehaviour
     private GameObject activeCell;
     private int activeRow;
     private int activeColumn;    
-    public GameObject antObject;
+    //public GameObject antObject;
     private bool isRowMove = false;
     private bool isPosMove = false;
     private int rowDir = -1;
