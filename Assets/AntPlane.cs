@@ -38,7 +38,7 @@ public class AntPlane : MonoBehaviour
         {
             cellGrid = new GameObject[gridSize, gridSize];
 
-            Debug.Log("AntPlane - Start() - cellGrid Length:" + cellGrid.Length);
+            //Debug.Log("AntPlane - Start() - cellGrid Length:" + cellGrid.Length);
             //Debug.Log("AntPlane - Start() - cellGrid[0] Length:" + cellGrid[0].Length);
             //cellGrid[gridSize] = new GameObject[gridSize];
             float cellSize = cellObject.GetComponent<MeshRenderer>().bounds.size.x;
@@ -75,12 +75,9 @@ public class AntPlane : MonoBehaviour
             activeCell = cellGrid[halfCells, halfCells];
             activeRow = halfCells;
             activeColumn = halfCells;
-            Debug.Log("AntPlane - Start() - activeRow, activeColumn: " + activeRow + ", " + activeColumn);
-            //dont change yet though, just for testing, ant will change white to black as first move anyway
-            //activeCell.GetComponent<MeshRenderer>().material = colourTwoMaterial;
-
-            Debug.Log("AntPlane - Start() - cellGrid Length:" + cellGrid.Length);
-            Debug.Log("AntPlane - Start() - cellGrid[0][0] Object:" + cellGrid[0,0]);
+            //Debug.Log("AntPlane - Start() - activeRow, activeColumn: " + activeRow + ", " + activeColumn);
+            //Debug.Log("AntPlane - Start() - cellGrid Length:" + cellGrid.Length);
+            //Debug.Log("AntPlane - Start() - cellGrid[0][0] Object:" + cellGrid[0,0]);
         }
 
         colourOneMaterial.SetOverrideTag("SurfaceType", "ColourOne");
@@ -108,10 +105,10 @@ public class AntPlane : MonoBehaviour
     
     private void AntActOnActiveCell()
     {
-        Debug.Log("AntMove - AntActOnActiveCell, material.name: " + activeCell.GetComponent<MeshRenderer>().material.name);
-        Debug.Log("AntMove - AntActOnActiveCell, material: " + activeCell.GetComponent<MeshRenderer>().material);
-        Debug.Log("AntMove - Before row col change, isRowMove, isPosMove: " + isRowMove + ", " + isPosMove);
-        Debug.Log("AntMove - Before row col change, activeRow, activeColumn: " + activeRow + ", " + activeColumn);
+        //Debug.Log("AntMove - AntActOnActiveCell, material.name: " + activeCell.GetComponent<MeshRenderer>().material.name);
+        //Debug.Log("AntMove - AntActOnActiveCell, material: " + activeCell.GetComponent<MeshRenderer>().material);
+        //Debug.Log("AntMove - Before row col change, isRowMove, isPosMove: " + isRowMove + ", " + isPosMove);
+        //Debug.Log("AntMove - Before row col change, activeRow, activeColumn: " + activeRow + ", " + activeColumn);
 
         if (activeCell.GetComponent<MeshRenderer>().material.GetTag("SurfaceType", false, default) == "ColourOne")
         {
@@ -148,55 +145,17 @@ public class AntPlane : MonoBehaviour
                 default:
                     break;
             }
-
-            //if its white turn to the right
-            //row becomes column, positive flips
-            //if (isRowMove)
-            //{                
-            //    if (isPosMove)
-            //    {
-            //        activeRow += 1;
-            //        isPosMove = true;
-            //    }
-            //    else
-            //    {
-            //        activeRow -= 1;
-            //        isPosMove = false;
-            //    }
-            //    isRowMove = false;
-            //}
-            //else
-            //{
-            //    if (isPosMove)
-            //    {
-            //        activeColumn -= 1;
-            //        isPosMove = false;
-            //    }
-            //    else
-            //    {
-            //        activeColumn += 1;
-            //        isPosMove = true;
-            //    }              
-            //}
-
-            //isPosMove = false;
-            
-            //isRowMove = isRowMove ? false : true;
-            
-
         }
         else if (activeCell.GetComponent<MeshRenderer>().material.GetTag("SurfaceType", false, default) == "ColourTwo")
         {
-            Debug.Log("AntMove - AntActOnActiveCell, CellColourBLACK, changing to white:");
+            //Debug.Log("AntMove - AntActOnActiveCell, CellColourBLACK, changing to white:");
             if (!activeCell.activeSelf)
             {
                 activeCell.SetActive(true);
             }
             activeCell.GetComponent<MeshRenderer>().material = colourOneMaterial;
             Vector3 pos = activeCell.transform.position;
-            //if its black turn to the left
-            //isRowMove = isRowMove ? false : true;
-            //isPosMove = isPosMove ? false : true;
+  
             switch (dir)
             {
                 case DIRECTION.UP:
@@ -227,8 +186,8 @@ public class AntPlane : MonoBehaviour
                     break;
             }
         }
-        Debug.Log("AntMove - about to AntMove(), isRowMove, isPosMove: " + isRowMove + ", " + isPosMove);
-        Debug.Log("AntMove - about to AntMove(), activeRow, activeColumn: " + activeRow + ", " + activeColumn);
+        //Debug.Log("AntMove - about to AntMove(), isRowMove, isPosMove: " + isRowMove + ", " + isPosMove);
+        //Debug.Log("AntMove - about to AntMove(), activeRow, activeColumn: " + activeRow + ", " + activeColumn);
         AntMove();
     }
     
@@ -262,19 +221,14 @@ public class AntPlane : MonoBehaviour
         if (isRowMove)
         {
             if (activeRow >= 1 && activeRow < gridSize - 1)
-            {
-                //int nextCellRow = isPosMove ? activeRow + 1 : activeRow - 1;
-                //activeRow = nextCellRow;
-                //cellGrid[activeRow] = new GameObject[gridSize];
+            {              
                 activeCell = cellGrid[activeRow, activeColumn];
             }
         }
         else
         {
             if (activeColumn >= 1 && activeColumn < gridSize-1)
-            {
-                //int nextCellCol = isPosMove ? activeColumn + 1 : activeColumn - 1;
-                //activeColumn = nextCellCol;
+            {               
                 activeCell = cellGrid[activeRow, activeColumn];
             }
         }        
